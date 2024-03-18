@@ -15,4 +15,4 @@ echo $HOSTNAME_SUFFIX
 hostnamectl set-hostname "${HOSTNAME_SUFFIX}"
 
 # Disable the systemd service so it doesn't run again on reboot
-systemctl disable set-hostname-from-mac.service
+systemctl disable change-hostname.service
