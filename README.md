@@ -1,3 +1,5 @@
+# Raspberry Pi Beginner Notebook
+
 ## Download Pre-built image
 | Date       | Platform                 | Download                                                                                |
 | ---------- | ------------------------ | ---------------------------------------------------------------------------------------- |
@@ -11,35 +13,17 @@ python3 -m virtualenv -p python3 env --system-site-packages
 echo "source ~/env/bin/activate" >> ~/.bashrc
 ```
 
-### Installing as a service
+## Install Other Services
 
-1. Put [juptyer-lab.services](jupyter-lab.service) under /etc/systemd/system
-2. Execute the following command
-
-```
-sudo curl -L https://github.com/sctse999/raspberry-pi-beginner/raw/main/jupyter-lab.service --output /etc/systemd/system/jupyter-lab.service
-sudo systemctl daemon-reload
-sudo systemctl enable jupyter-lab.service
-sudo systemctl start jupyter-lab.service
-```
-
-## Installing OLED hostname display
-
-### Installing luma.oled
-
-```
-sudo apt-get install python3-pil libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 -y 
-pip3 install luma.oled
-pip3 install netifaces # for displaying ip
-```
-
-### Installing as a service
-```
-sudo ln -s /home/pi/raspberry-pi-beginner/oled-hostname.service /etc/systemd/system
-sudo systemctl daemon-reload
-sudo systemctl enable oled-hostname.service
-```
+- Check [Systemd Service](admin/Systemd%20services.ipynb) 
+- Check [Setup Wifi (Bulleye)](admin/Setup%20Wifi%20-%20Bulleye.ipynb) 
+- Check [Setup Wifi (BookWorm)](admin/Setup%20Wifi%20-%20Bookworm.ipynb) 
 
 
+## Developer
 
-### TODO
+Before you release a new image, check the following files
+- [Clean up](./admin/Cleanup.ipynb)
+- [Install libraries](./admin/Install%20libraries.ipynb)
+- [Release a new image](./admin/Release%20a%20new%20image.ipynb)
+
