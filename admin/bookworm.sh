@@ -11,13 +11,11 @@ pip3 install --upgrade pip setuptools wheel
 pip3 install jupyterlab
 
 mkdir -p /home/pi/.jupyter/
-ln -s /home/pi/learn-python3/resources/jupyter_server_config.py /home/pi/.jupyter/jupyter_server_config.py
-sudo ln -sf /home/pi/learn-python3/resources/jupyter-lab.service /etc/systemd/system/jupyter-lab.service
+ln -s /home/pi/raspberry-pi-beginner/admin/jupyter_server_config.py /home/pi/.jupyter/jupyter_server_config.py
 
-sudo systemctl daemon-reload
-sudo systemctl enable jupyter-lab.service
-
+# To start jupyter lab , execute 
+# jupyter lab
 
 # install luma.oled for oled display
 pip3 install netifaces
-pip install luma.oled
+pip3 install luma.oled
