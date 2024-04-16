@@ -14,5 +14,7 @@ echo $HOSTNAME_SUFFIX
 # Set the hostname
 hostnamectl set-hostname "${HOSTNAME_SUFFIX}"
 
+sed -i  "s/127.0.1.1.*/127.0.1.1\t$HOSTNAME_SUFFIX/g" /etc/hosts
+
 # Disable the systemd service so it doesn't run again on reboot
 systemctl disable change-hostname.service
