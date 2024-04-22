@@ -11,7 +11,21 @@
 sudo apt-get install python3-virtualenv
 python3 -m virtualenv -p python3 env --system-site-packages
 echo "source ~/env/bin/activate" >> ~/.bashrc
+
+bash
+pip install jupyterlab
 ```
+
+
+## Clone this repo
+
+```
+git clone https://github.com/10botics/raspberry-pi-beginner
+```
+
+## Install required libraries
+
+- Check [Install libraries](admin/Install%20libraries.ipynb) 
 
 ## Install Other Services
 

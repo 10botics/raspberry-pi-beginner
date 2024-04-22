@@ -19,3 +19,7 @@ ln -s /home/pi/raspberry-pi-beginner/admin/jupyter_server_config.py /home/pi/.ju
 # install luma.oled for oled display
 pip3 install netifaces
 pip3 install luma.oled
+
+
+# for vcgencmd
+sudo apt-get install libraspberrypi-bin
