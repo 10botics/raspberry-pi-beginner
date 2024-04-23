@@ -23,3 +23,6 @@ pip3 install luma.oled
 
 # for vcgencmd
 sudo apt-get install libraspberrypi-bin
+
+# for wavemon
+sudo apt install wavemon
