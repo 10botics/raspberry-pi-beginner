@@ -3,6 +3,7 @@
 ## Download Pre-built image
 | Date       | Platform                 | Download                                                                                |
 | ---------- | ------------------------ | ---------------------------------------------------------------------------------------- |
+| 2024-06-24 | Raspberry Pi 4B / Bulleye | [Download](https://www.dropbox.com/scl/fi/5ebv5qxwrvnwqjlk5e8ni/pi4_beginner_20240624_pi_beginner.zip?rlkey=1hswg6iybdlnf77801vf8wewz&st=h051w8ys&dl=0) |
 | 2024-04-08 | Raspberry Pi 4B / Bulleye | [Download](https://www.dropbox.com/scl/fi/en765r64dasqcp212sus2/pi4_beginner_20240408.zip?rlkey=f6k8jpn8sb34lpwlaio2mll8c&dl=0) |
 
 ## Installing Jupyter Lab
