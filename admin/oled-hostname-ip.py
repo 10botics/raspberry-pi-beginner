@@ -4,11 +4,11 @@ from luma.oled.device import sh1106
 from PIL import ImageFont
 import netifaces
 import socket
-import time
 import subprocess
 import re
 
 wlan = "wlan0"
+lan = "eth0"
 
 
 def get_wlan_ip_address():
@@ -51,9 +51,20 @@ def get_hostname():
     return socket.gethostname()
 
 
+def get_lan_ip_address():
+    addrs = get_addrs(lan)
+    if addrs is None:
+        return None
+    if (netifaces.AF_INET in addrs) and (len(addrs[netifaces.AF_INET]) == 1):
+        return addrs[netifaces.AF_INET][0]['addr']
+    else:
+        return None
+
+
 def text():
     result = f"Hostname: {get_hostname()}\n"
-    result += f"IP: {get_wlan_ip_address()}\n"
+    result += f"WiFi IP: {get_wlan_ip_address()}\n"
+    result += f"LAN IP: {get_lan_ip_address()}\n"
     result += f"SSID: {get_current_ssid()}\n"
 
     from datetime import datetime
