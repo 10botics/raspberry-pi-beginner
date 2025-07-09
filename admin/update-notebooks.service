@@ -1,19 +1,14 @@
 [Unit]
-
 Description=Update Jupyter Notebooks
+After=network-online.target
+Wants=network-online.target
 
 [Service]
-
 Type=simple
-
 ExecStart=/bin/bash -c "update-notebooks.sh"
-
 User=pi
-
 Group=pi
-
 WorkingDirectory=/home/pi/raspberry-pi-beginner/admin
 
 [Install]
-
-WantedBy=multi-user.target
+WantedBy=network-online.target
