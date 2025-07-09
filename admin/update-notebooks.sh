@@ -5,6 +5,32 @@ log_message() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1"
 }
 
+# Function to wait for internet connectivity
+wait_for_internet() {
+    local max_attempts=30
+    local attempt=1
+    local wait_time=10
+    
+    log_message "Checking for internet connectivity..."
+    
+    while [ $attempt -le $max_attempts ]; do
+        log_message "Attempt $attempt/$max_attempts: Testing connectivity to github.com..."
+        
+        # Test DNS resolution and connectivity
+        if nslookup github.com >/dev/null 2>&1 && ping -c 1 -W 5 github.com >/dev/null 2>&1; then
+            log_message "SUCCESS: Internet connectivity confirmed"
+            return 0
+        fi
+        
+        log_message "No internet connectivity yet, waiting ${wait_time} seconds..."
+        sleep $wait_time
+        attempt=$((attempt + 1))
+    done
+    
+    log_message "ERROR: Failed to establish internet connectivity after $((max_attempts * wait_time)) seconds"
+    return 1
+}
+
 # Function to update git repository
 update_repo() {
     local repo_path="$1"
@@ -27,7 +53,7 @@ update_repo() {
     git status --porcelain
     
     log_message "Pulling latest changes for $repo_name..."
-    if git pull; then
+    if git pull --ff-only; then
         log_message "SUCCESS: $repo_name updated successfully"
     else
         log_message "ERROR: Failed to pull updates for $repo_name"
@@ -42,6 +68,12 @@ update_repo() {
 log_message "=== Starting notebook update script ==="
 log_message "Running as user: $(whoami)"
 log_message "Current working directory: $(pwd)"
+
+# Wait for internet connectivity before proceeding
+if ! wait_for_internet; then
+    log_message "FATAL: Cannot proceed without internet connectivity"
+    exit 1
+fi
 
 # Update each repository
 update_repo "/home/pi/raspberry-pi-beginner"
