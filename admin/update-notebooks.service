@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -c "update-notebooks.sh"
+ExecStart=/bin/bash update-notebooks.sh
 User=pi
 Group=pi
 WorkingDirectory=/home/pi/raspberry-pi-beginner/admin
